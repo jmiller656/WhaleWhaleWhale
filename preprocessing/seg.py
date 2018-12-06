@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 from random import shuffle
 import time
 
-km = joblib.load("km_whale.joblib")
+km = joblib.load("resources/km_whale.joblib")
 
 def segmentImg(img):
     #Convert to grayscale if necessary
@@ -64,7 +64,7 @@ def mul_img(img, lab):
     img[:,:,2] *= lab
     return img
 
-fn = "C:/Users/pwatm/Documents/Kaggle/train/"
+fn = "train/"
 files = os.listdir(fn)
 shuffle(files)
 for file in files:

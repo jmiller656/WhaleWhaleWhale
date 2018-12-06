@@ -1,0 +1,2 @@
+# WhaleWhaleWhale
+kaggle whale competition

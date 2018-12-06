@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 from random import shuffle
 import time
 
-km = joblib.load("resources/km_whale.joblib")
+km = joblib.load("../resources/km_whale.joblib")
 
 def segmentImg(img):
     #Convert to grayscale if necessary
@@ -63,14 +63,12 @@ def mul_img(img, lab):
     img[:,:,1] *= lab
     img[:,:,2] *= lab
     return img
-
-fn = "train/"
-files = os.listdir(fn)
-shuffle(files)
-for file in files:
-    print(file)
-    im = scipy.misc.imread(fn+file)
-    try:
+def main():
+    fn = "../train/"
+    files = os.listdir(fn)
+    for file in files:
+        print(file)
+        im = scipy.misc.imread(fn+file)
         tmp = segmentImg(im)
         if len(im.shape) >2:
             plt.imshow(np.uint8(im))
@@ -80,9 +78,9 @@ for file in files:
         if len(im.shape) > 2:
             plt.imshow(mul_img(im,tmp)[:,:,::-1])
         else:
-            plt.imshow(im*tmp)
+            plt.imshow(im*tmp, cmap='gray')
         plt.show()
-    except:
-        print(im.shape)
-        print("oops")
-    time.sleep(2)
+        time.sleep(2)
+
+if __name__ == '__main__':
+    main()
